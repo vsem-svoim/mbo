@@ -29,12 +29,12 @@ export function Button({
   };
 
   const variantClasses = {
-    primary: "bg-emerald-500 hover:bg-emerald-600 text-white",
-    blue: "bg-blue-500 hover:bg-blue-600 text-white",
-    danger: "bg-red-500 hover:bg-red-600 text-white",
+    primary: "bg-trade-neutral hover:bg-trade-neutralHover text-white",
+    blue: "bg-trade-neutral hover:bg-trade-neutralHover text-white",
+    danger: "bg-trade-sell hover:bg-trade-sellHover text-white",
     dark: "bg-dark-border hover:bg-dark-hover text-zinc-200",
-    success: "bg-green-500 hover:bg-green-600 text-white",
-    warning: "bg-amber-500 hover:bg-amber-600 text-white",
+    success: "bg-trade-buy hover:bg-trade-buyHover text-white",
+    warning: "bg-dark-hover hover:bg-slate-700 text-white",
   };
 
   return (

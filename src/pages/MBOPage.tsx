@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Play, Pause, RotateCcw, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { Play, Pause, RotateCcw } from "lucide-react";
 import {
   Area,
   XAxis,
@@ -334,12 +334,12 @@ export function MBOPage() {
             <KeyValue
               label="Delta"
               value={(cumulativeDelta >= 0 ? "+" : "") + cumulativeDelta.toFixed(0)}
-              valueClass={cumulativeDelta >= 0 ? "text-emerald-400" : "text-red-400"}
+              valueClass={cumulativeDelta >= 0 ? "text-trade-buyText" : "text-trade-sellText"}
             />
           </div>
         </div>
         <div className="flex items-center gap-2 text-sm text-slate-400">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
           <span>{isPlaying ? "Live Feed" : "Paused"}</span>
         </div>
       </div>
@@ -393,9 +393,8 @@ export function MBOPage() {
               </div>
               <div className="flex gap-2">
                 <Button
-                  variant="primary"
+                  variant="success"
                   onClick={() => onEnter("long")}
-                  icon={<ArrowUpRight className="w-4 h-4" />}
                   className="flex-1"
                 >
                   Long
@@ -403,7 +402,6 @@ export function MBOPage() {
                 <Button
                   variant="danger"
                   onClick={() => onEnter("short")}
-                  icon={<ArrowDownRight className="w-4 h-4" />}
                   className="flex-1"
                 >
                   Short
@@ -421,7 +419,7 @@ export function MBOPage() {
               <Metric
                 label="P&L"
                 value={fmtMoney(unrealized)}
-                valueClass={unrealized >= 0 ? "text-emerald-400" : "text-red-400"}
+                valueClass={unrealized >= 0 ? "text-trade-buyText" : "text-trade-sellText"}
               />
               <Metric
                 label="Position"
@@ -429,8 +427,8 @@ export function MBOPage() {
                 valueClass={
                   position
                     ? position.type === "long"
-                      ? "text-emerald-400"
-                      : "text-red-400"
+                      ? "text-trade-buyText"
+                      : "text-trade-sellText"
                     : ""
                 }
               />
@@ -450,9 +448,9 @@ export function MBOPage() {
                   <XAxis dataKey="i" hide />
                   <YAxis hide domain={["auto", "auto"]} />
                   <Tooltip formatter={(v) => [Number(v).toFixed(0), "Δ"]} />
-                  <ReferenceLine y={0} stroke="#1e2442" />
-                  <Area type="monotone" dataKey="d" fill="#10b981" stroke="#10b981" fillOpacity={0.3} dot={false} isAnimationActive={false} />
-                  <Line type="monotone" dataKey="d" stroke="#10b981" dot={false} isAnimationActive={false} />
+                  <ReferenceLine y={0} stroke="#2a2a2a" />
+                  <Area type="monotone" dataKey="d" fill="#4ade80" stroke="#4ade80" fillOpacity={0.2} dot={false} isAnimationActive={false} />
+                  <Line type="monotone" dataKey="d" stroke="#4ade80" dot={false} isAnimationActive={false} />
                 </ComposedChart>
               </ResponsiveContainer>
             </div>
@@ -474,11 +472,11 @@ export function MBOPage() {
                       <div className="w-16 text-right text-slate-400 font-semibold">{p}</div>
                       <div className="flex-1 h-5 bg-dark-bg rounded relative overflow-hidden">
                         <div
-                          className="absolute left-0 top-0 bottom-0 bg-emerald-500/30"
+                          className="absolute left-0 top-0 bottom-0 bg-trade-buy/40"
                           style={{ width: `${buyPct}%` }}
                         />
                         <div
-                          className="absolute right-0 top-0 bottom-0 bg-red-500/30"
+                          className="absolute right-0 top-0 bottom-0 bg-trade-sell/40"
                           style={{ width: `${sellPct}%` }}
                         />
                         <div className="absolute inset-0 flex items-center justify-center text-[10px] font-bold">
@@ -497,7 +495,7 @@ export function MBOPage() {
           <Section title="Order Book">
             <div className="grid grid-cols-2 gap-px bg-dark-border h-[480px]">
               <div className="bg-dark-panel flex flex-col min-h-0">
-                <div className="px-3 py-2 text-[12px] font-semibold uppercase tracking-wide border-b border-dark-border text-red-400 bg-red-400/10">
+                <div className="px-3 py-2 text-[12px] font-semibold uppercase tracking-wide border-b border-dark-border text-trade-sellText bg-trade-sell/10">
                   Asks
                 </div>
                 <div className="flex-1 overflow-y-auto text-[12px]">
@@ -512,7 +510,7 @@ export function MBOPage() {
                 </div>
               </div>
               <div className="bg-dark-panel flex flex-col min-h-0">
-                <div className="px-3 py-2 text-[12px] font-semibold uppercase tracking-wide border-b border-dark-border text-emerald-400 bg-emerald-400/10">
+                <div className="px-3 py-2 text-[12px] font-semibold uppercase tracking-wide border-b border-dark-border text-trade-buyText bg-trade-buy/10">
                   Bids
                 </div>
                 <div className="flex-1 overflow-y-auto text-[12px]">
@@ -540,13 +538,13 @@ export function MBOPage() {
                   return (
                     <div
                       key={d.key}
-                      className="absolute rounded-full bg-emerald-500"
+                      className="absolute rounded-full bg-slate-400"
                       style={{
                         left: `${100 - xPct}%`,
                         top: `${100 - yPct}%`,
                         width: d.r,
                         height: d.r,
-                        opacity: d.alpha,
+                        opacity: d.alpha * 0.5,
                       }}
                     />
                   );
@@ -568,7 +566,7 @@ export function MBOPage() {
                   }`}
                 >
                   <div className="text-slate-400">{t.timeStr}</div>
-                  <div className={`font-semibold ${t.isBuy ? "text-emerald-400" : "text-red-400"}`}>
+                  <div className={`font-semibold ${t.isBuy ? "text-trade-buyText" : "text-trade-sellText"}`}>
                     {t.price.toFixed(2)}
                   </div>
                   <div className="text-right text-slate-300">{t.size.toFixed(4)}</div>
@@ -590,11 +588,11 @@ export function MBOPage() {
               {divergences.map((d) => (
                 <div
                   key={d.ts}
-                  className={`p-3 rounded border-l-4 ${
-                    d.type === "bullish" ? "border-emerald-400" : "border-red-400"
+                  className={`p-3 rounded border-l-2 ${
+                    d.type === "bullish" ? "border-trade-buyText" : "border-trade-sellText"
                   } bg-dark-bg`}
                 >
-                  <div className="font-semibold">{d.title}</div>
+                  <div className="font-semibold text-sm">{d.title}</div>
                   <div className="text-[11px] text-slate-400">{d.desc}</div>
                 </div>
               ))}
@@ -611,11 +609,11 @@ export function MBOPage() {
               {liquidityEvents.map((e) => (
                 <div
                   key={e.ts}
-                  className={`p-3 rounded border-l-4 ${
-                    e.side === "bid" ? "border-emerald-400" : "border-red-400"
+                  className={`p-3 rounded border-l-2 ${
+                    e.side === "bid" ? "border-trade-buyText" : "border-trade-sellText"
                   } bg-dark-bg`}
                 >
-                  <div className="font-semibold">{e.title}</div>
+                  <div className="font-semibold text-sm">{e.title}</div>
                   <div className="text-[11px] text-slate-400">{e.desc}</div>
                 </div>
               ))}

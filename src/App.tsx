@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
-import { Home, TrendingUp, Zap, Brain } from "lucide-react";
 import { HomePage, MBOPage, HFTPage, MLModelsPage } from "@/pages";
 
 /**
@@ -18,67 +17,77 @@ function App() {
     <Router>
       <div className="flex h-screen bg-dark-bg">
         {/* Sidebar Navigation */}
-        <nav className="w-16 bg-dark-panel border-r border-dark-border flex flex-col items-center py-4 gap-2">
+        <nav className="w-48 bg-dark-panel border-r border-dark-border flex flex-col py-4">
+          <div className="px-4 py-3 mb-4 border-b border-dark-border">
+            <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              Trading Platform
+            </div>
+          </div>
+
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `w-12 h-12 flex items-center justify-center rounded-lg transition-all ${
+              `px-4 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-emerald-500 text-white"
-                  : "text-slate-400 hover:bg-dark-hover hover:text-white"
+                  ? "bg-dark-hover text-slate-200 border-l-2 border-slate-400"
+                  : "text-slate-400 hover:bg-dark-hover hover:text-slate-300"
               }`
             }
             title="Home"
           >
-            <Home className="w-5 h-5" />
+            Dashboard
           </NavLink>
 
-          <div className="w-10 h-px bg-dark-border my-2" />
+          <div className="my-2 px-4">
+            <div className="h-px bg-dark-border" />
+          </div>
 
           <NavLink
             to="/mbo"
             className={({ isActive }) =>
-              `w-12 h-12 flex items-center justify-center rounded-lg transition-all ${
+              `px-4 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-emerald-500 text-white"
-                  : "text-slate-400 hover:bg-dark-hover hover:text-white"
+                  ? "bg-dark-hover text-slate-200 border-l-2 border-slate-400"
+                  : "text-slate-400 hover:bg-dark-hover hover:text-slate-300"
               }`
             }
             title="MBO - Market By Order"
           >
-            <TrendingUp className="w-5 h-5" />
+            Market By Order
           </NavLink>
 
           <NavLink
             to="/hft"
             className={({ isActive }) =>
-              `w-12 h-12 flex items-center justify-center rounded-lg transition-all ${
+              `px-4 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-yellow-500 text-white"
-                  : "text-slate-400 hover:bg-dark-hover hover:text-white"
+                  ? "bg-dark-hover text-slate-200 border-l-2 border-slate-400"
+                  : "text-slate-400 hover:bg-dark-hover hover:text-slate-300"
               }`
             }
             title="HFT - High-Frequency Trading"
           >
-            <Zap className="w-5 h-5" />
+            High-Frequency Trading
           </NavLink>
 
           <NavLink
             to="/ml-models"
             className={({ isActive }) =>
-              `w-12 h-12 flex items-center justify-center rounded-lg transition-all ${
+              `px-4 py-2.5 text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-purple-500 text-white"
-                  : "text-slate-400 hover:bg-dark-hover hover:text-white"
+                  ? "bg-dark-hover text-slate-200 border-l-2 border-slate-400"
+                  : "text-slate-400 hover:bg-dark-hover hover:text-slate-300"
               }`
             }
             title="ML Models"
           >
-            <Brain className="w-5 h-5" />
+            ML Models
           </NavLink>
 
           {/* Version Badge */}
-          <div className="mt-auto text-[10px] text-slate-600 font-mono">v1.0</div>
+          <div className="mt-auto px-4 py-3 border-t border-dark-border">
+            <div className="text-[10px] text-slate-600 font-mono">v1.0.0</div>
+          </div>
         </nav>
 
         {/* Main Content Area */}

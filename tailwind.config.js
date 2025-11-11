@@ -20,10 +20,20 @@ export default {
           900: '#0c4a6e',
         },
         dark: {
-          bg: '#0a0e27',
-          panel: '#151932',
-          border: '#1e2442',
-          hover: '#2d3454',
+          bg: '#0d0d0d',
+          panel: '#1a1a1a',
+          border: '#2a2a2a',
+          hover: '#333333',
+        },
+        trade: {
+          buy: '#1e4d2b',
+          buyHover: '#2d5f3a',
+          buyText: '#4ade80',
+          sell: '#4d1e1e',
+          sellHover: '#5f2d2d',
+          sellText: '#f87171',
+          neutral: '#1e3a5f',
+          neutralHover: '#2d4a6f',
         }
       },
       animation: {

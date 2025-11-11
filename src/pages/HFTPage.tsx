@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Zap, Activity, TrendingUp, TrendingDown, AlertTriangle } from "lucide-react";
+import { Activity, AlertTriangle } from "lucide-react";
 import {
   Line,
   XAxis,
@@ -266,21 +266,18 @@ export function HFTPage() {
       {/* Top Bar */}
       <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
         <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
-            <Zap className="w-5 h-5 text-yellow-400" />
-            <div className="text-white font-extrabold text-lg">HFT - High-Frequency Trading</div>
-          </div>
+          <div className="text-white font-extrabold text-lg">HFT - High-Frequency Trading</div>
           <div className="text-xs text-slate-400">
             Active Strategy:{" "}
-            <span className="text-emerald-400 font-semibold">
+            <span className="text-slate-300 font-semibold">
               {strategies.find((s) => s.enabled)?.name || "None"}
             </span>
           </div>
         </div>
         <div className="flex items-center gap-2 text-sm text-slate-400">
           <span
-            className={`w-2 h-2 rounded-full ${
-              isRunning ? "bg-emerald-500 animate-pulse" : "bg-slate-500"
+            className={`w-1.5 h-1.5 rounded-full ${
+              isRunning ? "bg-slate-400" : "bg-slate-600"
             }`}
           />
           <span>{isRunning ? "Running" : "Stopped"}</span>
@@ -329,7 +326,7 @@ export function HFTPage() {
                   onClick={() => toggleStrategy(s.id)}
                   className={`p-3 rounded cursor-pointer transition-colors border ${
                     s.enabled
-                      ? "border-emerald-500 bg-emerald-500/10"
+                      ? "border-slate-500 bg-slate-500/10"
                       : "border-dark-border bg-dark-bg hover:bg-dark-hover"
                   }`}
                 >
@@ -346,43 +343,41 @@ export function HFTPage() {
               <Metric
                 label="Total P&L"
                 value={fmtMoney(totalPnL)}
-                valueClass={totalPnL >= 0 ? "text-emerald-400" : "text-red-400"}
+                valueClass={totalPnL >= 0 ? "text-trade-buyText" : "text-trade-sellText"}
               />
               <Metric
                 label="Unrealized"
                 value={fmtMoney(unrealizedPnL)}
-                valueClass={unrealizedPnL >= 0 ? "text-emerald-400" : "text-red-400"}
+                valueClass={unrealizedPnL >= 0 ? "text-trade-buyText" : "text-trade-sellText"}
               />
               <Metric
                 label="Position"
                 value={position ? position.toUpperCase() : "None"}
-                valueClass={position === "long" ? "text-emerald-400" : position === "short" ? "text-red-400" : ""}
+                valueClass={position === "long" ? "text-trade-buyText" : position === "short" ? "text-trade-sellText" : ""}
               />
               <Metric label="Trades" value={String(trades.length)} />
               <Metric label="Win Rate" value={fmtPcnt(winRate)} />
               <Metric
                 label="Wins"
                 value={String(wins)}
-                valueClass="text-emerald-400"
-                icon={<TrendingUp className="w-3 h-3" />}
+                valueClass="text-trade-buyText"
               />
               <Metric
                 label="Losses"
                 value={String(losses)}
-                valueClass="text-red-400"
-                icon={<TrendingDown className="w-3 h-3" />}
+                valueClass="text-trade-sellText"
               />
-              <Metric label="Avg Win" value={fmtMoney(avgWin)} valueClass="text-emerald-400" />
-              <Metric label="Avg Loss" value={fmtMoney(avgLoss)} valueClass="text-red-400" />
+              <Metric label="Avg Win" value={fmtMoney(avgWin)} valueClass="text-trade-buyText" />
+              <Metric label="Avg Loss" value={fmtMoney(avgLoss)} valueClass="text-trade-sellText" />
               <Metric
                 label="Profit Factor"
                 value={profitFactor.toFixed(2)}
-                valueClass={profitFactor > 1 ? "text-emerald-400" : "text-red-400"}
+                valueClass={profitFactor > 1 ? "text-trade-buyText" : "text-trade-sellText"}
               />
               <Metric
                 label="Return"
                 value={fmtPcnt((totalPnL / 10000) * 100)}
-                valueClass={totalPnL >= 0 ? "text-emerald-400" : "text-red-400"}
+                valueClass={totalPnL >= 0 ? "text-trade-buyText" : "text-trade-sellText"}
               />
             </div>
           </Section>
@@ -400,7 +395,7 @@ export function HFTPage() {
                   <Line
                     type="monotone"
                     dataKey="price"
-                    stroke="#10b981"
+                    stroke="#4ade80"
                     strokeWidth={2}
                     dot={false}
                     isAnimationActive={false}
@@ -421,9 +416,9 @@ export function HFTPage() {
                     <Area
                       type="monotone"
                       dataKey="balance"
-                      stroke="#3b82f6"
-                      fill="#3b82f6"
-                      fillOpacity={0.3}
+                      stroke="#94a3b8"
+                      fill="#94a3b8"
+                      fillOpacity={0.2}
                       isAnimationActive={false}
                     />
                   </AreaChart>
@@ -450,7 +445,7 @@ export function HFTPage() {
                       <div>
                         <span
                           className={`font-bold ${
-                            t.type === "long" ? "text-emerald-400" : "text-red-400"
+                            t.type === "long" ? "text-trade-buyText" : "text-trade-sellText"
                           }`}
                         >
                           {t.type.toUpperCase()}
@@ -466,7 +461,7 @@ export function HFTPage() {
                         P&L:{" "}
                         <span
                           className={`font-bold ${
-                            (t.pnl || 0) >= 0 ? "text-emerald-400" : "text-red-400"
+                            (t.pnl || 0) >= 0 ? "text-trade-buyText" : "text-trade-sellText"
                           }`}
                         >
                           {fmtMoney(t.pnl || 0)}
@@ -490,12 +485,12 @@ export function HFTPage() {
                 signals.map((sig) => (
                   <div
                     key={sig.ts}
-                    className={`p-3 rounded border-l-4 ${
+                    className={`p-3 rounded border-l-2 ${
                       sig.kind === "enter-long"
-                        ? "border-emerald-400 bg-emerald-400/10"
+                        ? "border-trade-buyText bg-trade-buy/10"
                         : sig.kind === "enter-short"
-                        ? "border-red-400 bg-red-400/10"
-                        : "border-blue-400 bg-blue-400/10"
+                        ? "border-trade-sellText bg-trade-sell/10"
+                        : "border-slate-500 bg-slate-500/10"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
