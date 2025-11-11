@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { Home, TrendingUp, Zap, Brain } from "lucide-react";
 import { HomePage, MBOPage, HFTPage, MLModelsPage } from "@/pages";

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Play, Pause, RotateCcw, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import {
   Area,
@@ -20,7 +20,6 @@ import {
   Position,
   StrategyTrade,
   MBOUpdate,
-  Side,
 } from "@/types";
 import { fmtMoney, fmtPcnt, nowStr } from "@/utils";
 import { useSyntheticFeed } from "@/hooks/useSyntheticFeed";
@@ -206,7 +205,7 @@ export function MBOPage() {
         [
           {
             ts: Date.now(),
-            type: "bullish",
+            type: "bullish" as const,
             title: "Bullish Divergence",
             desc: "Price falling but delta rising",
           },
@@ -218,7 +217,7 @@ export function MBOPage() {
         [
           {
             ts: Date.now(),
-            type: "bearish",
+            type: "bearish" as const,
             title: "Bearish Divergence",
             desc: "Price rising but delta falling",
           },

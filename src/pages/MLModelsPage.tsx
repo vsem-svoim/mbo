@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Cpu, Brain, Shield, TrendingUp, Settings, Sparkles } from "lucide-react";
 import { Panel, Section, Button } from "@/components";
 import { runModel, modelConfigs } from "@/ml-models/registry";
-import { MLInput, MLOutput, MLModelConfig } from "@/types";
+import { MLInput, MLOutput } from "@/types";
 
 /**
  * ML Models Dashboard Page

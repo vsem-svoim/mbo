@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Zap, Activity, TrendingUp, TrendingDown, AlertTriangle } from "lucide-react";
 import {
   Line,
@@ -192,8 +192,6 @@ export function HFTPage() {
   }
 
   function executeSignal(signal: StrategySignal) {
-    const mid = (bestBid + bestAsk) / 2;
-
     if (signal.kind === "enter-long" && !position) {
       setPosition("long");
       setEntryPrice(bestAsk);
@@ -256,7 +254,7 @@ export function HFTPage() {
     : 0;
 
   // Chart data
-  const balanceHistory = trades.map((t, i) => ({
+  const balanceHistory = trades.map((_t, i) => ({
     idx: i,
     balance: trades.slice(i).reduce((sum, tr) => sum + (tr.pnl || 0), 10000),
   }));
