@@ -1,0 +1,57 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Python
+ml-backend/venv
+ml-backend/__pycache__
+ml-backend/**/__pycache__
+ml-backend/**/*.pyc
+ml-backend/**/*.pyo
+ml-backend/**/*.pyd
+ml-backend/.pytest_cache
+ml-backend/**/.pytest_cache
+*.py[cod]
+*$py.class
+
+# Build outputs
+dist
+build
+.vite
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Git
+.git
+.gitignore
+.github
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Testing
+coverage
+.nyc_output
+
+# Misc
+README.md
+*.md
+.eslintrc.cjs
