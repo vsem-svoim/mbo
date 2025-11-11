@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
-import { HomePage, MBOPage, HFTPage, MLModelsPage } from "@/pages";
+import { HomePage, MBOPage, HFTPage, MLModelsPage, PerformancePage } from "@/pages";
 
 /**
  * Order Flow Pro — Main Application
@@ -84,6 +84,20 @@ function App() {
             ML Models
           </NavLink>
 
+          <NavLink
+            to="/performance"
+            className={({ isActive }) =>
+              `px-4 py-2.5 text-sm font-medium transition-colors ${
+                isActive
+                  ? "bg-dark-hover text-slate-200 border-l-2 border-slate-400"
+                  : "text-slate-400 hover:bg-dark-hover hover:text-slate-300"
+              }`
+            }
+            title="Performance & Testing"
+          >
+            Performance & Testing
+          </NavLink>
+
           {/* Version Badge */}
           <div className="mt-auto px-4 py-3 border-t border-dark-border">
             <div className="text-[10px] text-slate-600 font-mono">v1.0.0</div>
@@ -97,6 +111,7 @@ function App() {
             <Route path="/mbo" element={<MBOPage />} />
             <Route path="/hft" element={<HFTPage />} />
             <Route path="/ml-models" element={<MLModelsPage />} />
+            <Route path="/performance" element={<PerformancePage />} />
           </Routes>
         </main>
       </div>
