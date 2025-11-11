@@ -9,7 +9,7 @@
 
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #0a0e27;
+  background-color: #0d0d0d;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -42,16 +42,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #151932;
+  background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2d3454;
+  background: #333333;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3d4565;
+  background: #444444;
 }
 
 /* Animations */
