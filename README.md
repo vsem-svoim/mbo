@@ -4,7 +4,7 @@ A comprehensive React + Vite trading platform with Market By Order (MBO) analysi
 
 ## Features
 
-### 🎯 MBO - Market By Order Analysis
+### MBO - Market By Order Analysis
 - **Real-time order book visualization** with bid/ask spreads
 - **Imbalance/Cumulative Delta Analysis** tracking buy vs sell pressure
 - **Volume profile** at each price level
@@ -15,7 +15,7 @@ A comprehensive React + Vite trading platform with Market By Order (MBO) analysi
 - **Time & Sales tape** with highlighted aggressive orders
 - Historical order book replay with playback controls
 
-### ⚡ HFT - High-Frequency Trading
+### HFT - High-Frequency Trading
 - **Multiple strategy algorithms**:
   - Momentum Strategy
   - Mean Reversion
@@ -26,7 +26,7 @@ A comprehensive React + Vite trading platform with Market By Order (MBO) analysi
 - **Risk management** and position sizing
 - **Performance analytics**: win rate, profit factor, avg win/loss
 
-### 🤖 ML Models Integration
+### ML Models Integration
 Six production-ready ML models with pre-configured UIs:
 
 1. **Capacity Planning** (Prophet + TFT)
@@ -298,4 +298,4 @@ For issues and questions:
 
 ---
 
-Built with ❤️ using React + Vite
+Built using React + Vite

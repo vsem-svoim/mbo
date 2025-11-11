@@ -1,22 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { HomePage, MBOPage, HFTPage, MLModelsPage, PerformancePage } from "@/pages";
 
-/**
- * Order Flow Pro — Main Application
- *
- * A comprehensive trading platform with:
- * - MBO (Market By Order) analysis
- * - HFT (High-Frequency Trading) strategies
- * - ML model integration for production systems
- *
- * Built with React 18, Vite 5, TypeScript, and Tailwind CSS
- */
-
 function App() {
   return (
     <Router>
       <div className="flex h-screen bg-dark-bg">
-        {/* Sidebar Navigation */}
         <nav className="w-48 bg-dark-panel border-r border-dark-border flex flex-col py-4">
           <div className="px-4 py-3 mb-4 border-b border-dark-border">
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -98,13 +86,11 @@ function App() {
             Performance & Testing
           </NavLink>
 
-          {/* Version Badge */}
           <div className="mt-auto px-4 py-3 border-t border-dark-border">
             <div className="text-[10px] text-slate-600 font-mono">v1.0.0</div>
           </div>
         </nav>
 
-        {/* Main Content Area */}
         <main className="flex-1 overflow-hidden">
           <Routes>
             <Route path="/" element={<HomePage />} />

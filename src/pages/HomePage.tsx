@@ -1,11 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components";
 
-/**
- * Home/Landing Page
- * Navigation hub for all features
- */
-
 export function HomePage() {
   const navigate = useNavigate();
 
@@ -56,7 +51,6 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen bg-dark-bg text-zinc-200">
-      {/* Hero Section */}
       <div className="bg-dark-panel border-b border-dark-border">
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="text-center">
@@ -84,7 +78,6 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* Features Grid */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         <h2 className="text-xl font-semibold mb-12 text-slate-300">Trading Modules</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -93,12 +86,10 @@ export function HomePage() {
               key={feature.id}
               className="bg-dark-panel border border-dark-border hover:border-slate-600 transition-colors"
             >
-              {/* Content */}
               <div className="p-8">
                 <h3 className="text-base font-semibold mb-4 text-slate-200">{feature.title}</h3>
                 <p className="text-xs text-slate-500 mb-6 leading-relaxed">{feature.description}</p>
 
-                {/* Features List */}
                 <div className="space-y-2 mb-8">
                   {feature.features.map((f, idx) => (
                     <div key={idx} className="flex items-start gap-3 text-xs text-slate-400">
@@ -108,7 +99,6 @@ export function HomePage() {
                   ))}
                 </div>
 
-                {/* CTA Button */}
                 <Button
                   variant="dark"
                   onClick={() => navigate(feature.route)}
@@ -122,7 +112,6 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="border-t border-dark-border py-4 mt-auto">
         <div className="max-w-7xl mx-auto px-6 text-center text-xs text-slate-600">
           Trading Platform © {new Date().getFullYear()}

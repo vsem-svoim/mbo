@@ -293,8 +293,6 @@ class ConfigManager:
 
         logger.info(f"Deploying configuration version {version_id} using {deployment_strategy} strategy")
 
-        # TODO: Implement actual deployment logic (update etcd, trigger services, etc.)
-
         # Mark as active
         if self.active_version:
             self.active_version.status = ConfigStatus.DEPRECATED

@@ -2,17 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Panel, Section, Button, Metric } from "@/components";
 import { fmtMoney } from "@/utils";
 
-/**
- * Performance & Testing Page
- *
- * Professional testing suite for MBO/HFT platform:
- * - Strategy Backtesting
- * - Performance Benchmarks
- * - Load Testing
- * - Latency Measurements
- * - System Health Monitoring
- */
-
 interface BenchmarkResult {
   name: string;
   value: number;
@@ -207,7 +196,6 @@ export function PerformancePage() {
 
   return (
     <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      {/* Top Bar */}
       <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
         <div className="flex items-center gap-6">
           <div className="text-white font-extrabold text-lg">Performance & Testing</div>
@@ -221,9 +209,7 @@ export function PerformancePage() {
         </div>
       </div>
 
-      {/* Main Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-[360px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        {/* Left Panel */}
         <Panel>
           <Section title="Benchmarks">
             <div className="flex flex-col gap-3 mb-4">
@@ -258,7 +244,6 @@ export function PerformancePage() {
           </Section>
         </Panel>
 
-        {/* Center Panel */}
         <Panel>
           <Section title="Backtest Engine">
             <div className="mb-4">
@@ -335,7 +320,6 @@ export function PerformancePage() {
           </Section>
         </Panel>
 
-        {/* Right Panel */}
         <Panel>
           <Section title="Load Testing">
             <div className="mb-4">

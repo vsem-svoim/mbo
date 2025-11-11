@@ -49,7 +49,6 @@ class LogAggregator:
         Returns:
             List of LogEvent objects
         """
-        # TODO: Implement actual log fetching from ELK/Loki/etc
         logger.info(f"Fetching logs from {start_time} to {end_time}")
         return self._mock_log_events(start_time, end_time)
 

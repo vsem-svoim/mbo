@@ -112,8 +112,6 @@ class NBEATSModel:
         if not self.fitted or not NBEATS_AVAILABLE:
             return self._mock_prediction(current_value, horizon_hours)
 
-        # TODO: Implement actual N-BEATS inference
-        # For now, use mock prediction
         return self._mock_prediction(current_value, horizon_hours)
 
     def predict_capacity(

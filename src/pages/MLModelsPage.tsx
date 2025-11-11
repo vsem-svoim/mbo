@@ -3,17 +3,6 @@ import { Panel, Section, Button } from "@/components";
 import { runModel, modelConfigs } from "@/ml-models/registry";
 import { MLInput, MLOutput } from "@/types";
 
-/**
- * ML Models Dashboard Page
- *
- * Features:
- * - 6 pre-configured ML model UIs
- * - Interactive parameter inputs
- * - Real-time model execution
- * - Output visualization
- * - Model metadata and guardrails
- */
-
 const categoryColors: Record<string, string> = {
   capacity: "text-blue-400 border-blue-400",
   performance: "text-purple-400 border-purple-400",
@@ -110,7 +99,6 @@ export function MLModelsPage() {
 
   return (
     <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      {/* Top Bar */}
       <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
         <div className="flex items-center gap-2">
           <div className="text-white font-extrabold text-lg">ML Models Dashboard</div>
@@ -120,9 +108,7 @@ export function MLModelsPage() {
         </div>
       </div>
 
-      {/* Main Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        {/* Left Sidebar - Model List */}
         <Panel>
           <Section title="Model Selection">
             <div className="flex flex-col gap-2">
@@ -159,11 +145,9 @@ export function MLModelsPage() {
           </Section>
         </Panel>
 
-        {/* Right Panel - Model Details */}
         <Panel>
           {currentConfig && (
             <>
-              {/* Model Header */}
               <div className="m-3 p-4 rounded-lg border border-dark-border bg-dark-panel">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -185,7 +169,6 @@ export function MLModelsPage() {
                 </div>
               </div>
 
-              {/* Use Cases */}
               <Section title="Use Cases">
                 <div className="grid grid-cols-2 gap-2">
                   {currentConfig.useCases.map((useCase, idx) => (
@@ -199,7 +182,6 @@ export function MLModelsPage() {
                 </div>
               </Section>
 
-              {/* Input Parameters */}
               <Section
                 title="Input Parameters"
                 action={
@@ -262,7 +244,6 @@ export function MLModelsPage() {
                 </div>
               </Section>
 
-              {/* Output */}
               <Section title="Model Output">
                 {currentState.error && (
                   <div className="p-4 rounded bg-red-500/10 border border-red-500/30 text-red-400">
@@ -299,7 +280,6 @@ export function MLModelsPage() {
                       </div>
                     ))}
 
-                    {/* JSON View */}
                     <details className="mt-4">
                       <summary className="cursor-pointer text-sm text-slate-400 hover:text-slate-300">
                         View Raw JSON
@@ -312,7 +292,6 @@ export function MLModelsPage() {
                 )}
               </Section>
 
-              {/* Guardrails */}
               {currentConfig.guardrails && currentConfig.guardrails.length > 0 && (
                 <Section title="Guardrails">
                   <div className="space-y-2">
@@ -328,7 +307,6 @@ export function MLModelsPage() {
                 </Section>
               )}
 
-              {/* Model Info */}
               <Section title="Model Information">
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="p-3 rounded bg-dark-bg">

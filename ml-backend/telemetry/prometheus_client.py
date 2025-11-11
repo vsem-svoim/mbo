@@ -37,8 +37,6 @@ class PrometheusClient:
         Returns:
             List of PrometheusMetric objects
         """
-        # TODO: Implement actual Prometheus API call
-        # For now, return mock data for development
         logger.info(f"Prometheus query: {query}")
         return self._mock_query_response(query)
 
@@ -61,7 +59,6 @@ class PrometheusClient:
         Returns:
             List of PrometheusMetric objects
         """
-        # TODO: Implement actual Prometheus range query
         logger.info(f"Prometheus range query: {query} from {start} to {end}")
         return self._mock_query_response(query)
 

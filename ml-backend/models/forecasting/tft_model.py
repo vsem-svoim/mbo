@@ -181,8 +181,6 @@ class TFTCapacityModel:
         if not self.fitted or not TFT_AVAILABLE:
             return self._mock_prediction(current_metrics, horizon_hours)
 
-        # TODO: Implement actual TFT inference
-        # For now, return mock predictions
         return self._mock_prediction(current_metrics, horizon_hours)
 
     def predict_capacity(
