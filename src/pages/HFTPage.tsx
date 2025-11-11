@@ -492,7 +492,13 @@ export function HFTPage() {
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-semibold text-sm">
+                      <span className={`font-semibold text-sm ${
+                        sig.kind === "enter-long"
+                          ? "text-trade-buyText"
+                          : sig.kind === "enter-short"
+                          ? "text-trade-sellText"
+                          : "text-slate-400"
+                      }`}>
                         {sig.kind === "enter-long"
                           ? "LONG ENTRY"
                           : sig.kind === "enter-short"
