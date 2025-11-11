@@ -9,7 +9,7 @@ import {
   ComposedChart,
   Line,
 } from "recharts";
-import { Panel, Section, Button, Metric, KeyValue, OrderRow } from "@/components";
+import { Panel, Section, Button, Metric, KeyValue, OrderRow, PageLayout } from "@/components";
 import {
   BookLevel,
   TradeTapeRow,
@@ -303,15 +303,12 @@ export function MBOPage() {
   }, [askLevels, bidLevels, bestBid, bestAsk]);
 
   return (
-    <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
-        <div className="flex items-center gap-6">
-          <div className="text-white font-extrabold text-lg">MBO - Market By Order</div>
+    <PageLayout
+      header={{
+        title: "MBO - Market By Order",
+        subtitle: (
           <div className="flex gap-4 text-xs">
-            <KeyValue
-              label="Last"
-              value={`$${((bestBid + bestAsk) / 2).toFixed(2)}`}
-            />
+            <KeyValue label="Last" value={`$${((bestBid + bestAsk) / 2).toFixed(2)}`} />
             <KeyValue label="Spread" value={`$${(bestAsk - bestBid).toFixed(2)}`} />
             <KeyValue
               label="Delta"
@@ -319,15 +316,12 @@ export function MBOPage() {
               valueClass={cumulativeDelta >= 0 ? "text-trade-buyText" : "text-trade-sellText"}
             />
           </div>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-slate-400">
-          <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
-          <span>{isPlaying ? "Live Feed" : "Paused"}</span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        <Panel>
+        ),
+        status: { label: isPlaying ? "Live Feed" : "Paused", active: isPlaying }
+      }}
+      layout="three-col"
+    >
+      <Panel spacing="compact">
           <Section title="Controls">
             <div className="flex flex-col gap-3">
               <div className="flex gap-2">
@@ -595,7 +589,6 @@ export function MBOPage() {
             </div>
           </Section>
         </Panel>
-      </div>
-    </div>
+    </PageLayout>
   );
 }

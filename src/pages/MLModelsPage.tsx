@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Panel, Section, Button } from "@/components";
+import { Panel, Section, Button, PageLayout } from "@/components";
 import { runModel, modelConfigs } from "@/ml-models/registry";
 import { MLInput, MLOutput } from "@/types";
 
@@ -98,18 +98,14 @@ export function MLModelsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
-        <div className="flex items-center gap-2">
-          <div className="text-white font-extrabold text-lg">ML Models Dashboard</div>
-        </div>
-        <div className="text-xs text-slate-400">
-          {Object.keys(modelConfigs).length} Models Available
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        <Panel>
+    <PageLayout
+      header={{
+        title: "ML Models Dashboard",
+        subtitle: `${Object.keys(modelConfigs).length} Models Available`
+      }}
+      layout="two-col"
+    >
+      <Panel spacing="compact">
           <Section title="Model Selection">
             <div className="flex flex-col gap-2">
               {Object.values(modelConfigs).map((config) => (
@@ -330,7 +326,6 @@ export function MLModelsPage() {
             </>
           )}
         </Panel>
-      </div>
-    </div>
+    </PageLayout>
   );
 }

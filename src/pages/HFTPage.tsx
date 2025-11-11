@@ -9,7 +9,7 @@ import {
   Area,
   AreaChart,
 } from "recharts";
-import { Panel, Section, Button, Metric } from "@/components";
+import { Panel, Section, Button, Metric, PageLayout } from "@/components";
 import { StrategySignal, StrategyTrade } from "@/types";
 import { fmtMoney, fmtPcnt, movingAverage, stdDev } from "@/utils";
 import { useSyntheticFeed } from "@/hooks/useSyntheticFeed";
@@ -249,29 +249,22 @@ export function HFTPage() {
   const priceData = priceHistory.slice(-100).map((p, i) => ({ i, price: p }));
 
   return (
-    <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
-        <div className="flex items-center gap-6">
-          <div className="text-white font-extrabold text-lg">HFT - High-Frequency Trading</div>
-          <div className="text-xs text-slate-400">
+    <PageLayout
+      header={{
+        title: "HFT - High-Frequency Trading",
+        subtitle: (
+          <>
             Active Strategy:{" "}
             <span className="text-slate-300 font-semibold">
               {strategies.find((s) => s.enabled)?.name || "None"}
             </span>
-          </div>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-slate-400">
-          <span
-            className={`w-1.5 h-1.5 rounded-full ${
-              isRunning ? "bg-slate-400" : "bg-slate-600"
-            }`}
-          />
-          <span>{isRunning ? "Running" : "Stopped"}</span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        <Panel>
+          </>
+        ),
+        status: { label: isRunning ? "Running" : "Stopped", active: isRunning }
+      }}
+      layout="three-col"
+    >
+      <Panel spacing="compact">
           <Section title="Control Panel">
             <div className="flex flex-col gap-3">
               <div className="flex gap-2">
@@ -499,7 +492,6 @@ export function HFTPage() {
             </div>
           </Section>
         </Panel>
-      </div>
-    </div>
+    </PageLayout>
   );
 }

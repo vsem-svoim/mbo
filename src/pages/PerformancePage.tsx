@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Panel, Section, Button, Metric } from "@/components";
+import { Panel, Section, Button, Metric, PageLayout } from "@/components";
 import { fmtMoney } from "@/utils";
 
 interface BenchmarkResult {
@@ -195,22 +195,15 @@ export function PerformancePage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
-        <div className="flex items-center gap-6">
-          <div className="text-white font-extrabold text-lg">Performance & Testing</div>
-          <div className="text-xs text-slate-400">
-            Benchmarks • Backtesting • Load Testing
-          </div>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-slate-400">
-          <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
-          <span>System Ready</span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 xl:grid-cols-[360px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        <Panel>
+    <PageLayout
+      header={{
+        title: "Performance & Testing",
+        subtitle: "Benchmarks • Backtesting • Load Testing",
+        status: { label: "System Ready" }
+      }}
+      layout="three-col"
+    >
+      <Panel spacing="compact">
           <Section title="Benchmarks">
             <div className="flex flex-col gap-3 mb-4">
               <Button variant="primary" onClick={runBenchmarks} className="w-full">
@@ -389,7 +382,6 @@ export function PerformancePage() {
             )}
           </Section>
         </Panel>
-      </div>
-    </div>
+    </PageLayout>
   );
 }
