@@ -66,7 +66,7 @@ export const tailSLOModel: ModelFn = async (input: MLInput): Promise<MLOutput> =
 
 // 3. Extreme Events — EVT (POT/GPD)
 export const extremeEventsModel: ModelFn = async (input: MLInput): Promise<MLOutput> => {
-  const { exceedances = 3, window_size = 1000, current_value = 0.95 } = input;
+  const { exceedances = 3, window_size = 1000 } = input;
 
   // Simulate Peaks Over Threshold with Generalized Pareto Distribution
   const base_threshold = 0.98;
@@ -94,7 +94,7 @@ export const extremeEventsModel: ModelFn = async (input: MLInput): Promise<MLOut
 
 // 4. Regime Detection — BOCPD (Bayesian Online Changepoint Detection)
 export const regimeDetectionModel: ModelFn = async (input: MLInput): Promise<MLOutput> => {
-  const { p99 = 300, error_rate = 0.02, throughput = 1000, window_observations = 100 } = input;
+  const { p99 = 300, error_rate = 0.02, window_observations = 100 } = input;
 
   // Simulate BOCPD algorithm
   const hazard_rate = 1 / 250; // expected changepoint every 250 observations
@@ -150,7 +150,7 @@ export const banditModel: ModelFn = async (input: MLInput): Promise<MLOutput> =>
 
 // 6. Offline Optimization — Bayesian Optimization
 export const bayesOptModel: ModelFn = async (input: MLInput): Promise<MLOutput> => {
-  const { throughput = 1200, latency = 250, success_rate = 0.95, iteration = 1 } = input;
+  const { throughput = 1200, latency = 250, iteration = 1 } = input;
 
   // Simulate Bayesian Optimization with Gaussian Process
   const gp_mean = throughput / 500;

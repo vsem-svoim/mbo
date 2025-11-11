@@ -1,5 +1,3 @@
-import React from "react";
-
 interface KeyValueProps {
   label: string;
   value: string;
