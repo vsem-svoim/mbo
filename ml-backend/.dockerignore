@@ -1,0 +1,54 @@
+# Python
+venv
+__pycache__
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+*.py[cod]
+*$py.class
+.pytest_cache
+**/.pytest_cache
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Testing
+coverage
+.coverage
+htmlcov
+
+# Build
+dist
+build
+*.egg-info
+
+# Documentation (not needed in container)
+*.md
+ARCHITECTURE.md
+README.md
+
+# Scripts (already copied)
+start.sh
+
+# Temporary files
+tmp
+temp
+*.tmp

@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Frontend Service - React + Vite
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mbo-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - mbo-network
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
+  # Backend Service - FastAPI ML Backend
+  backend:
+    build:
+      context: ./ml-backend
+      dockerfile: Dockerfile
+    container_name: mbo-backend
+    ports:
+      - "8000:8000"
+    networks:
+      - mbo-network
+    restart: unless-stopped
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - LOG_LEVEL=info
+      - PYTHONPATH=/app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  mbo-network:
+    driver: bridge
+
+# Optional: Add volumes for persistent data
+# volumes:
+#   ml-models:
+#   app-data:
