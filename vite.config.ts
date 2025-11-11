@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: '/mbo/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/mbo/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -19,4 +19,4 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
   },
-})
+}))
