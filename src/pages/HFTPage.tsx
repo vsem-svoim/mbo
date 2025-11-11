@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Activity, AlertTriangle } from "lucide-react";
 import {
   Line,
   XAxis,
@@ -285,7 +284,7 @@ export function HFTPage() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-px bg-dark-border flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
         {/* Left Panel */}
         <Panel>
           <Section title="Control Panel">
@@ -294,7 +293,6 @@ export function HFTPage() {
                 <Button
                   variant={isRunning ? "danger" : "primary"}
                   onClick={() => setIsRunning(!isRunning)}
-                  icon={isRunning ? <AlertTriangle className="w-4 h-4" /> : <Activity className="w-4 h-4" />}
                   className="flex-1"
                 >
                   {isRunning ? "Stop" : "Start"}

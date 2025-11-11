@@ -7,7 +7,7 @@ interface PanelProps {
 
 export function Panel({ children, className = "" }: PanelProps) {
   return (
-    <div className={`bg-dark-bg overflow-y-auto ${className}`}>
+    <div className={`bg-dark-bg overflow-y-auto p-3 ${className}`}>
       {children}
     </div>
   );

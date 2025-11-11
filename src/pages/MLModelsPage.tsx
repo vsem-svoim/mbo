@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Cpu, Brain, Shield, TrendingUp, Settings, Sparkles } from "lucide-react";
 import { Panel, Section, Button } from "@/components";
 import { runModel, modelConfigs } from "@/ml-models/registry";
 import { MLInput, MLOutput } from "@/types";
@@ -14,15 +13,6 @@ import { MLInput, MLOutput } from "@/types";
  * - Output visualization
  * - Model metadata and guardrails
  */
-
-const categoryIcons: Record<string, React.ReactNode> = {
-  capacity: <TrendingUp className="w-5 h-5" />,
-  performance: <Sparkles className="w-5 h-5" />,
-  risk: <Shield className="w-5 h-5" />,
-  detection: <Brain className="w-5 h-5" />,
-  tuning: <Settings className="w-5 h-5" />,
-  optimization: <Cpu className="w-5 h-5" />,
-};
 
 const categoryColors: Record<string, string> = {
   capacity: "text-blue-400 border-blue-400",
@@ -123,7 +113,6 @@ export function MLModelsPage() {
       {/* Top Bar */}
       <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
         <div className="flex items-center gap-2">
-          <Brain className="w-6 h-6 text-purple-400" />
           <div className="text-white font-extrabold text-lg">ML Models Dashboard</div>
         </div>
         <div className="text-xs text-slate-400">
@@ -132,7 +121,7 @@ export function MLModelsPage() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-px bg-dark-border flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
         {/* Left Sidebar - Model List */}
         <Panel>
           <Section title="Model Selection">
@@ -148,7 +137,6 @@ export function MLModelsPage() {
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    {categoryIcons[config.category]}
                     <span className="font-semibold text-sm">{config.name}</span>
                   </div>
                   <div className="text-[10px] text-slate-400 uppercase tracking-wide">
@@ -161,9 +149,9 @@ export function MLModelsPage() {
 
           <Section title="Legend">
             <div className="space-y-2 text-[11px]">
-              {Object.entries(categoryIcons).map(([category, icon]) => (
+              {Object.entries(categoryColors).map(([category, colorClass]) => (
                 <div key={category} className="flex items-center gap-2">
-                  <div className={categoryColors[category]}>{icon}</div>
+                  <div className={`w-3 h-3 rounded ${colorClass}`}></div>
                   <span className="capitalize">{category}</span>
                 </div>
               ))}
@@ -180,9 +168,6 @@ export function MLModelsPage() {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className={categoryColors[currentConfig.category]}>
-                        {categoryIcons[currentConfig.category]}
-                      </div>
                       <h2 className="text-xl font-bold">{currentConfig.name}</h2>
                     </div>
                     <p className="text-sm text-slate-300 mb-3">{currentConfig.description}</p>
@@ -270,7 +255,6 @@ export function MLModelsPage() {
                     variant="primary"
                     onClick={() => handleRunModel(selectedModel)}
                     disabled={currentState.loading}
-                    icon={<Cpu className="w-4 h-4" />}
                     className="w-full"
                   >
                     {currentState.loading ? "Running Model..." : "Run Model"}
@@ -295,7 +279,6 @@ export function MLModelsPage() {
 
                 {currentState.loading && (
                   <div className="text-center text-slate-400 py-8">
-                    <Cpu className="w-8 h-8 mx-auto mb-2 animate-spin" />
                     <div>Running model...</div>
                   </div>
                 )}
@@ -338,7 +321,6 @@ export function MLModelsPage() {
                         key={idx}
                         className="flex items-center gap-2 p-2 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs"
                       >
-                        <Shield className="w-4 h-4" />
                         <span>{guardrail}</span>
                       </div>
                     ))}
