@@ -38,7 +38,6 @@ class ClickHouseClient:
         Returns:
             DataFrame with query results
         """
-        # TODO: Implement actual ClickHouse connection
         logger.info(f"ClickHouse query: {query[:100]}...")
         return self._mock_query_response(query)
 

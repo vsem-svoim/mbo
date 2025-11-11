@@ -23,23 +23,7 @@ import {
 import { fmtMoney, fmtPcnt, nowStr } from "@/utils";
 import { useSyntheticFeed } from "@/hooks/useSyntheticFeed";
 
-/**
- * MBO (Market By Order) Page
- *
- * Features:
- * - Real-time order book visualization
- * - Imbalance/Cumulative Delta Analysis
- * - Buy vs Sell volume tracking
- * - Volume profile at each price level
- * - Aggressive vs passive order detection
- * - Volume heatmap visualization
- * - Liquidity absorption detection
- * - Order flow divergence indicators
- * - Time & Sales tape with aggressive orders highlighted
- */
-
 export function MBOPage() {
-  // Order book state
   const [askLevels, setAskLevels] = useState<BookLevel[]>([]);
   const [bidLevels, setBidLevels] = useState<BookLevel[]>([]);
   const [cumulativeDelta, setCumulativeDelta] = useState(0);
@@ -320,7 +304,6 @@ export function MBOPage() {
 
   return (
     <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      {/* Top Bar */}
       <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
         <div className="flex items-center gap-6">
           <div className="text-white font-extrabold text-lg">MBO - Market By Order</div>
@@ -343,9 +326,7 @@ export function MBOPage() {
         </div>
       </div>
 
-      {/* Main Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        {/* Left Panel */}
         <Panel>
           <Section title="Controls">
             <div className="flex flex-col gap-3">
@@ -486,7 +467,6 @@ export function MBOPage() {
           </Section>
         </Panel>
 
-        {/* Center Panel */}
         <Panel>
           <Section title="Order Book">
             <div className="grid grid-cols-2 gap-px bg-dark-border h-[480px]">
@@ -550,7 +530,6 @@ export function MBOPage() {
           </Section>
         </Panel>
 
-        {/* Right Panel */}
         <Panel>
           <Section title="Time & Sales">
             <div className="max-h-[360px] overflow-y-auto text-[11px]">

@@ -14,18 +14,6 @@ import { StrategySignal, StrategyTrade } from "@/types";
 import { fmtMoney, fmtPcnt, movingAverage, stdDev } from "@/utils";
 import { useSyntheticFeed } from "@/hooks/useSyntheticFeed";
 
-/**
- * HFT (High-Frequency Trading) Page
- *
- * Features:
- * - Strategy backtesting with entry/exit signals
- * - P&L tracking and performance metrics
- * - Multiple strategy algorithms
- * - Real-time signal generation
- * - Risk management and position sizing
- * - Performance analytics and metrics
- */
-
 interface StrategyConfig {
   id: string;
   name: string;
@@ -262,7 +250,6 @@ export function HFTPage() {
 
   return (
     <div className="min-h-screen bg-dark-bg text-zinc-200 flex flex-col">
-      {/* Top Bar */}
       <div className="flex items-center justify-between px-5 py-3 bg-dark-panel border-b border-dark-border">
         <div className="flex items-center gap-6">
           <div className="text-white font-extrabold text-lg">HFT - High-Frequency Trading</div>
@@ -283,9 +270,7 @@ export function HFTPage() {
         </div>
       </div>
 
-      {/* Main Grid */}
       <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
-        {/* Left Panel */}
         <Panel>
           <Section title="Control Panel">
             <div className="flex flex-col gap-3">
@@ -381,7 +366,6 @@ export function HFTPage() {
           </Section>
         </Panel>
 
-        {/* Center Panel */}
         <Panel>
           <Section title="Price Chart">
             <div className="h-64">
@@ -473,7 +457,6 @@ export function HFTPage() {
           </Section>
         </Panel>
 
-        {/* Right Panel */}
         <Panel>
           <Section title="Recent Signals">
             <div className="max-h-[600px] overflow-y-auto space-y-2">
