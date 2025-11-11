@@ -222,7 +222,7 @@ export function PerformancePage() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-[360px_1fr_360px] gap-px bg-dark-border flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-[360px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
         {/* Left Panel */}
         <Panel>
           <Section title="Benchmarks">

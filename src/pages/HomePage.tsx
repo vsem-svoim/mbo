@@ -86,22 +86,22 @@ export function HomePage() {
 
       {/* Features Grid */}
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <h2 className="text-xl font-semibold mb-8 text-slate-300">Trading Modules</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <h2 className="text-xl font-semibold mb-12 text-slate-300">Trading Modules</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature) => (
             <div
               key={feature.id}
               className="bg-dark-panel border border-dark-border hover:border-slate-600 transition-colors"
             >
               {/* Content */}
-              <div className="p-5">
-                <h3 className="text-base font-semibold mb-2 text-slate-200">{feature.title}</h3>
-                <p className="text-xs text-slate-500 mb-4 leading-relaxed">{feature.description}</p>
+              <div className="p-8">
+                <h3 className="text-base font-semibold mb-4 text-slate-200">{feature.title}</h3>
+                <p className="text-xs text-slate-500 mb-6 leading-relaxed">{feature.description}</p>
 
                 {/* Features List */}
-                <div className="space-y-1 mb-5">
+                <div className="space-y-2 mb-8">
                   {feature.features.map((f, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-400">
+                    <div key={idx} className="flex items-start gap-3 text-xs text-slate-400">
                       <span className="text-slate-600 mt-0.5">•</span>
                       <span>{f}</span>
                     </div>

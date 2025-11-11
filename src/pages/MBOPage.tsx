@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Play, Pause, RotateCcw } from "lucide-react";
 import {
   Area,
   XAxis,
@@ -345,7 +344,7 @@ export function MBOPage() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-px bg-dark-border flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-[320px_1fr_360px] gap-6 bg-dark-bg flex-1 min-h-0 p-6">
         {/* Left Panel */}
         <Panel>
           <Section title="Controls">
@@ -355,7 +354,6 @@ export function MBOPage() {
                   <Button
                     variant="primary"
                     onClick={() => setIsPlaying(true)}
-                    icon={<Play className="w-4 h-4" />}
                     className="flex-1"
                   >
                     Play
@@ -364,7 +362,6 @@ export function MBOPage() {
                   <Button
                     variant="dark"
                     onClick={() => setIsPlaying(false)}
-                    icon={<Pause className="w-4 h-4" />}
                     className="flex-1"
                   >
                     Pause
@@ -373,7 +370,6 @@ export function MBOPage() {
                 <Button
                   variant="blue"
                   onClick={onReset}
-                  icon={<RotateCcw className="w-4 h-4" />}
                   className="flex-1"
                 >
                   Reset
