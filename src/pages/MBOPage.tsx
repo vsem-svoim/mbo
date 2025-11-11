@@ -566,7 +566,7 @@ export function MBOPage() {
                     {t.price.toFixed(2)}
                   </div>
                   <div className="text-right text-slate-300">{t.size.toFixed(4)}</div>
-                  <div className="text-right text-[9px] font-bold">
+                  <div className={`text-right text-[9px] font-bold ${t.isAggressive ? "text-amber-400" : "text-slate-500"}`}>
                     {t.isAggressive ? "AGG" : "PAS"}
                   </div>
                 </div>
